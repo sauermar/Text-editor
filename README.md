@@ -1,7 +1,7 @@
 # Text-editor
 # Ouredit - Electron-based Text Editor
 
-![ouredit](images/ouredit.PNG)
+<img src="images/ouredit.PNG" alt="logo" width="250"/>
 
 Ouredit is a portable text editor written in C# using an Electron wrapper. This means that the editor can interact with the user using native elements on all popular platforms.
 
@@ -13,13 +13,13 @@ Ouredit is a portable text editor written in C# using an Electron wrapper. This 
 
 Upon opening, the user is greeted with a newly opened file. This file's name and path are set by default to 'new.txt' in the current directory, i.e. the directory in which Ouredit was launched.
 
-![newFile](images/newFile.PNG)
+<img src="images/newFile.PNG" alt="newfile" width="650"/>
 
 The title as well as the file tab ribbon tells the user which files is being edited. In the lower left corner is the text statistics information. This information is updated while interacting with the editor.
 
 The user may now type and edit the file content. Every change is automatically saved to the file. The updated content can be viewed using different tools right after the user has completed his latest change in the file content.
 
-![newFile](images/HelloWorld.PNG)
+<img src="images/HelloWorld.PNG" alt="txtfile" width="650"/>
 
 Optionally, the user can save the file content to a different file. This can be achieved using the 'File' menu, which contains among others a 'Save As...' option. A new file will be created or an existing one will be overwritten by the current file's text content.
 
@@ -31,7 +31,7 @@ The user can take advantage of some more advanced features implemented into Oure
 
 Ouredit allows the user to see his most frequently used words. The user can take advantage of this in order to get a text suggestion. By typing '@', a context menu is show. A list of up to four words is present inside the context menu, sorted by their frequency.
 
-![suggestions](images/suggestions.PNG)
+<img src="images/suggestions.PNG" alt="siggestions" width="650"/>
 
 The encoding in which the opened file is interpreted can be changed using the 'Encoding' menu. Using the 'Interpret File as...' menu items changes the input encoding, i.e the encoding in which the file is read, while using the regular 'Encoding' menu items changes the output encoding, i.e. the encoding in which the file is saved. Note that with an aggressive auto saving mode the input and output encoding should not differ.
 
@@ -39,7 +39,7 @@ The user can use a variety of shortcuts. These can also be configured and saved 
 
 The settings window available in the 'Settings' menu is the central point of all Ouredit configuration. The user may see default values or change them to their preferences. Once saved, the configuration is saved to disc. Note that if the configuration file is not found during launch, the default configuration is loaded instead. Resetting the settings results in loading the default configuration.
 
-![suggestions](images/eols.PNG)
+<img src="images/eols.png" alt="eols" width="650"/>
 
 ## Program documentation
 
