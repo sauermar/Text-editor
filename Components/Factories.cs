@@ -9,13 +9,13 @@ namespace Components
     [Leskovar]
     internal abstract class BufferFactory
     {
-        public abstract Buffer Create(File file);
+        public abstract Buffer Create(Models.File file);
     }
 
     [Leskovar]
     internal class ImmediateBufferFactory : BufferFactory
     {
-        public override Buffer Create(File file)
+        public override Buffer Create(Models.File file)
         {
             return new ImmediateBuffer(file);
         }
@@ -24,7 +24,7 @@ namespace Components
     [Leskovar]
     internal class LazyBufferFactory : BufferFactory
     {
-        public override Buffer Create(File file)
+        public override Buffer Create(Models.File file)
         {
             return new LazyBuffer(file);
         }
@@ -48,7 +48,7 @@ namespace Components
         /// <param name="bufferType">The type of the instantiated buffer.</param>
         /// <param name="file">The file over which the buffer operates.</param>
         /// <returns></returns>
-        public static Buffer GetBuffer(BufferType bufferType, File file)
+        public static Buffer GetBuffer(BufferType bufferType, Models.File file)
         {
             return Factories[bufferType].Create(file);
         }

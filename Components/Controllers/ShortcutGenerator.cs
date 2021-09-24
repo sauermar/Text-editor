@@ -16,7 +16,7 @@ namespace Components.Controllers
             //Creates JSON file with available commands as keys and their corresponding shortcuts
             if (!System.IO.File.Exists(JSONFilePath))
             {
-                using (StreamWriter sw = File.CreateText(JSONFilePath))
+                using (StreamWriter sw = System.IO.File.CreateText(JSONFilePath))
                 {
                     sw.Write(SerializeToFile(CommandList.Get()));
                 }

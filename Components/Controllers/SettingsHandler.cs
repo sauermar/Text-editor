@@ -55,7 +55,7 @@ namespace Components.Controllers
                 try
                 {
                     var jsonString =
-                        File.ReadAllText(File.Exists(_settingsPath) ? _settingsPath : _defaultSettingsPath);
+                        System.IO.File.ReadAllText(System.IO.File.Exists(_settingsPath) ? _settingsPath : _defaultSettingsPath);
 
                     SettingsInstance = JsonSerializer.Deserialize<Settings>(jsonString);
                 }
@@ -84,7 +84,7 @@ namespace Components.Controllers
             /// </summary>
             public async Task ResetSettings()
             {
-                await using var fs = File.Create(_defaultSettingsPath);
+                await using var fs = System.IO.File.Create(_defaultSettingsPath);
                 SettingsInstance = await JsonSerializer.DeserializeAsync<Settings>(fs);
             }
 
@@ -137,7 +137,7 @@ namespace Components.Controllers
             /// </summary>
             public async Task SaveSettingsToDisc()
             {
-                await using var fs = File.Create(_settingsPath);
+                await using var fs = System.IO.File.Create(_settingsPath);
                 await JsonSerializer.SerializeAsync(fs, SettingsInstance);
             }
         }
