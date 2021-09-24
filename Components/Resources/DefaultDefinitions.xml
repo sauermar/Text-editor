@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions>
+  <definition name="C" caseSensitive="true">
+    <default>
+      <font name="Courier New" size="11" style="regular" foreColor="black" backColor="transparent"/>
+    </default>
+    <pattern name="Comment" type="block" beginsWith="//" endsWith="\n">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="MultiLineComment" type="block" beginsWith="/*" endsWith="*/">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="String" type="block" beginsWith="&quot;" endsWith="&quot;" escapesWith="\">
+      <font name="Courier New" size="11" style="regular" foreColor="darkred" backColor="transparent"/>
+    </pattern>
+    <pattern name="WordGroup01" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>write</word>
+      <word>while</word>
+      <word>volatile</word>
+      <word>void</word>
+      <word>unsigned</word>
+      <word>union</word>
+      <word>typedef</word>
+      <word>time</word>
+      <word>tanh</word>
+      <word>tan</word>
+      <word>system</word>
+      <word>switch</word>
+      <word>struct</word>
+      <word>strcpy</word>
+      <word>strcmp</word>
+      <word>static</word>
+      <word>srand</word>
+      <word>sqrt</word>
+      <word>sizeof</word>
+      <word>sinh</word>
+      <word>sin</word>
+      <word>signed</word>
+      <word>signal</word>
+      <word>short</word>
+      <word>scanf</word>
+      <word>return</word>
+      <word>rename</word>
+      <word>remove</word>
+      <word>register</word>
+      <word>read</word>
+      <word>rand</word>
+      <word>putchar</word>
+      <word>printf</word>
+      <word>pow</word>
+      <word>open</word>
+      <word>malloc</word>
+      <word>long</word>
+      <word>log10</word>
+      <word>log</word>
+      <word>labs</word>
+      <word>int</word>
+      <word>if</word>
+      <word>goto</word>
+      <word>getenv</word>
+      <word>getchar</word>
+      <word>free</word>
+      <word>for</word>
+      <word>floor</word>
+      <word>float</word>
+      <word>fabs</word>
+      <word>extern</word>
+      <word>exp</word>
+      <word>exit</word>
+      <word>enum</word>
+      <word>else</word>
+      <word>double</word>
+      <word>do</word>
+      <word>div</word>
+      <word>default</word>
+      <word>cosh</word>
+      <word>cos</word>
+      <word>continue</word>
+      <word>const</word>
+      <word>close</word>
+      <word>clock</word>
+      <word>char</word>
+      <word>ceil</word>
+      <word>case</word>
+      <word>calloc</word>
+      <word>break</word>
+      <word>auto</word>
+      <word>atol</word>
+      <word>atoi</word>
+      <word>atof</word>
+      <word>atan</word>
+      <word>asin</word>
+      <word>acos</word>
+      <word>abs</word>
+      <word>abort</word>
+    </pattern>
+  </definition>
+  <definition name="C++" caseSensitive="true">
+    <default>
+      <font name="Courier New" size="11" style="regular" foreColor="black" backColor="transparent"/>
+    </default>
+    <pattern name="Comment" type="block" beginsWith="//" endsWith="\n">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="MultiLineComment" type="block" beginsWith="/*" endsWith="*/">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="String" type="block" beginsWith="&quot;" endsWith="&quot;" escapesWith="\">
+      <font name="Courier New" size="11" style="regular" foreColor="darkred" backColor="transparent"/>
+    </pattern>
+    <pattern name="WordGroup01" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>xor</word>
+      <word>while</word>
+      <word>volatile</word>
+      <word>void</word>
+      <word>virtual</word>
+      <word>using</word>
+      <word>unsigned</word>
+      <word>union</word>
+      <word>u8</word>
+      <word>u64</word>
+      <word>u32</word>
+      <word>u16</word>
+      <word>u128</word>
+      <word>typename</word>
+      <word>typedef</word>
+      <word>try</word>
+      <word>true</word>
+      <word>throw</word>
+      <word>this</word>
+      <word>template</word>
+      <word>switch</word>
+      <word>struct</word>
+      <word>string</word>
+      <word>static_cast</word>
+      <word>static</word>
+      <word>sizeof</word>
+      <word>signed</word>
+      <word>short</word>
+      <word>s8</word>
+      <word>s64</word>
+      <word>s32</word>
+      <word>s16</word>
+      <word>s128</word>
+      <word>return</word>
+      <word>reinterpret_cast</word>
+      <word>register</word>
+      <word>public</word>
+      <word>protected</word>
+      <word>private</word>
+      <word>or</word>
+      <word>operator</word>
+      <word>not</word>
+      <word>new</word>
+      <word>near</word>
+      <word>namespace</word>
+      <word>mutable</word>
+      <word>long</word>
+      <word>int</word>
+      <word>inline</word>
+      <word>if</word>
+      <word>huge</word>
+      <word>goto</word>
+      <word>friend</word>
+      <word>for</word>
+      <word>float</word>
+      <word>fixed</word>
+      <word>finally</word>
+      <word>far</word>
+      <word>false</word>
+      <word>f32</word>
+      <word>extern</word>
+      <word>explicit</word>
+      <word>except</word>
+      <word>enum</word>
+      <word>else</word>
+      <word>dynamic_cast</word>
+      <word>double</word>
+      <word>do</word>
+      <word>delete</word>
+      <word>default</word>
+      <word>continue</word>
+      <word>const_cast</word>
+      <word>const</word>
+      <word>class</word>
+      <word>char</word>
+      <word>catch</word>
+      <word>case</word>
+      <word>break</word>
+      <word>bool</word>
+      <word>auto</word>
+      <word>asm</word>
+      <word>and</word>
+      <word>#warning</word>
+      <word>#undef</word>
+      <word>#pragma</word>
+      <word>#line</word>
+      <word>#include</word>
+      <word>#ifndef</word>
+      <word>#ifdef</word>
+      <word>#if</word>
+      <word>#error</word>
+      <word>#endif</word>
+      <word>#else</word>
+      <word>#elif</word>
+      <word>#define</word>
+    </pattern>
+  </definition>
+  <definition name="C#" caseSensitive="true">
+    <default>
+      <font name="Courier New" size="11" style="regular" foreColor="black" backColor="transparent"/>
+    </default>
+    <pattern name="Keyword" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>as</word>
+      <word>is</word>
+      <word>new</word>
+      <word>sizeof</word>
+      <word>typeof</word>
+      <word>true</word>
+      <word>false</word>
+      <word>stackalloc</word>
+      <word>explicit</word>
+      <word>implicit</word>
+      <word>operator</word>
+      <word>base</word>
+      <word>this</word>
+      <word>null</word>
+    </pattern>
+    <pattern name="Namespace" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>namespace</word>
+      <word>using</word>
+    </pattern>
+    <pattern name="MethodParameter" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>params</word>
+      <word>ref</word>
+      <word>out</word>
+    </pattern>
+    <pattern name="Statement" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>if</word>
+      <word>else</word>
+      <word>switch</word>
+      <word>case</word>
+      <word>do</word>
+      <word>for</word>
+      <word>foreach</word>
+      <word>in</word>
+      <word>while</word>
+      <word>break</word>
+      <word>continue</word>
+      <word>goto</word>
+      <word>return</word>
+      <word>try</word>
+      <word>throw</word>
+      <word>catch</word>
+      <word>finally</word>
+      <word>checked</word>
+      <word>unchecked</word>
+      <word>fixed</word>
+      <word>lock</word>
+    </pattern>
+    <pattern name="Modifier" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>internal</word>
+      <word>private</word>
+      <word>protected</word>
+      <word>public</word>
+      <word>abstract</word>
+      <word>const</word>
+      <word>default</word>
+      <word>event</word>
+      <word>extern</word>
+      <word>override</word>
+      <word>readonly</word>
+      <word>sealed</word>
+      <word>static</word>
+      <word>unsafe</word>
+      <word>virtual</word>
+      <word>volatile</word>
+    </pattern>
+    <pattern name="ValueType" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>void</word>
+      <word>bool</word>
+      <word>byte</word>
+      <word>char</word>
+      <word>decimal</word>
+      <word>double</word>
+      <word>enum</word>
+      <word>float</word>
+      <word>int</word>
+      <word>long</word>
+      <word>sbyte</word>
+      <word>short</word>
+      <word>struct</word>
+      <word>uint</word>
+      <word>ulong</word>
+      <word>ushort</word>
+    </pattern>
+    <pattern name="ReferenceType" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>class</word>
+      <word>interface</word>
+      <word>delegate</word>
+      <word>object</word>
+      <word>string</word>
+    </pattern>
+    <pattern name="Operator" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="red" backColor="transparent"/>
+      <word>+</word>
+      <word>-</word>
+      <word>=</word>
+      <word>%</word>
+      <word>*</word>
+      <word>/</word>
+      <word>&amp;</word>
+      <word>|</word>
+    </pattern>
+    <pattern name="String" type="block" beginsWith="&amp;quot;" endsWith="&amp;quot;" escapesWith="\">
+      <font name="Courier New" size="11" style="regular" foreColor="#666666" backColor="transparent"/>
+    </pattern>
+    <pattern name="VerbatimString" type="block" beginsWith="@&amp;quot;" endsWith="&amp;quot;">
+      <font name="Courier New" size="11" style="regular" foreColor="#666666" backColor="transparent"/>
+    </pattern>
+    <pattern name="Comment" type="block" beginsWith="//" endsWith="\n">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="MultiLineComment" type="block" beginsWith="/*" endsWith="*/">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="PreprocessorDirective" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>#if</word>
+      <word>#else</word>
+      <word>#elif</word>
+      <word>#endif</word>
+      <word>#define</word>
+      <word>#undef</word>
+      <word>#warning</word>
+      <word>#error</word>
+      <word>#line</word>
+      <word>#region</word>
+      <word>#endregion</word>
+      <word>#pragma</word>
+    </pattern>
+  </definition>
+  <definition name="HTML" caseSensitive="false">
+    <default>
+      <font name="Courier New" size="11" style="regular" foreColor="black" backColor="transparent"/>
+    </default>
+    <pattern name="MultiLineComment" type="block" beginsWith="&amp;lt;!--" endsWith="--&amp;gt;">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="Markup" type="markup" highlightAttributes="true">
+      <font name="Courier New" size="11" style="regular" foreColor="maroon" backColor="transparent">
+        <bracketStyle foreColor="blue" backColor="transparent"/>
+        <attributeNameStyle foreColor="red" backColor="transparent"/>
+        <attributeValueStyle foreColor="blue" backColor="transparent"/>
+      </font>
+    </pattern>
+  </definition>
+  <definition name="Java" caseSensitive="true">
+    <default>
+      <font name="Courier New" size="11" style="regular" foreColor="black" backColor="transparent"/>
+    </default>
+    <pattern name="Keyword" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>private</word>
+      <word>protected</word>
+      <word>public</word>
+      <word>namespace</word>
+      <word>class</word>
+      <word>var</word>
+      <word>for</word>
+      <word>if</word>
+      <word>else</word>
+      <word>while</word>
+      <word>switch</word>
+      <word>case</word>
+      <word>using</word>
+      <word>get</word>
+      <word>return</word>
+      <word>null</word>
+      <word>void</word>
+      <word>int</word>
+      <word>string</word>
+      <word>float</word>
+      <word>this</word>
+      <word>set</word>
+      <word>new</word>
+      <word>true</word>
+      <word>false</word>
+      <word>const</word>
+      <word>static</word>
+      <word>package</word>
+      <word>function,</word>
+      <word>internal</word>
+      <word>extends</word>
+      <word>super</word>
+      <word>import</word>
+      <word>default</word>
+      <word>break</word>
+      <word>try</word>
+      <word>catch</word>
+      <word>finally</word>
+    </pattern>
+    <pattern name="Comment" type="block" beginsWith="//" endsWith="\n">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="MultiLineComment" type="block" beginsWith="/*" endsWith="*/">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="Operators" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="red" backColor="transparent"/>
+      <word>+</word>
+      <word>-</word>
+      <word>=</word>
+    </pattern>
+  </definition>
+  <definition name="JavaScript" caseSensitive="true">
+    <default>
+      <font name="Courier New" size="11" style="regular" foreColor="black" backColor="transparent"/>
+    </default>
+    <pattern name="Function" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="purple" backColor="transparent"/>
+      <word>GetObject</word>
+      <word>ScriptEngine</word>
+      <word>ScriptEngineBuildVersion</word>
+      <word>ScriptEngineMajorVersion</word>
+      <word>ScriptEngineMinorVersion</word>
+    </pattern>
+    <pattern name="Method" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>abs</word>
+      <word>acos</word>
+      <word>anchor</word>
+      <word>apply</word>
+      <word>asin</word>
+      <word>atan</word>
+      <word>atan2</word>
+      <word>atEnd</word>
+      <word>big</word>
+      <word>blink</word>
+      <word>bold</word>
+      <word>call</word>
+      <word>ceil</word>
+      <word>charAt</word>
+      <word>charCodeAt</word>
+      <word>compile</word>
+      <word>concat</word>
+      <word>cos</word>
+      <word>decodeURI</word>
+      <word>decodeURIComponent</word>
+      <word>dimensions</word>
+      <word>encodeURI</word>
+      <word>encodeURIComponent</word>
+      <word>escape</word>
+      <word>eval</word>
+      <word>exec</word>
+      <word>exp</word>
+      <word>fixed</word>
+      <word>floor</word>
+      <word>fontcolor</word>
+      <word>fontsize</word>
+      <word>fromCharCode</word>
+      <word>getDate</word>
+      <word>getDay</word>
+      <word>getFullYear</word>
+      <word>getHours</word>
+      <word>getItem</word>
+      <word>getMilliseconds</word>
+      <word>getMinutes</word>
+      <word>getMonth</word>
+      <word>getSeconds</word>
+      <word>getTime</word>
+      <word>getTimezoneOffset</word>
+      <word>getUTCDate</word>
+      <word>getUTCDay</word>
+      <word>getUTCFullYear</word>
+      <word>getUTCHours</word>
+      <word>getUTCMilliseconds</word>
+      <word>getUTCMinutes</word>
+      <word>getUTCMonth</word>
+      <word>getUTCSeconds</word>
+      <word>getVarDate</word>
+      <word>getYear</word>
+      <word>hasOwnProperty</word>
+      <word>indexOf</word>
+      <word>isFinite</word>
+      <word>isNaN</word>
+      <word>isPrototypeOf</word>
+      <word>italics</word>
+      <word>item</word>
+      <word>join</word>
+      <word>lastIndexOf</word>
+      <word>lbound</word>
+      <word>link</word>
+      <word>localeCompare</word>
+      <word>log</word>
+      <word>match</word>
+      <word>max</word>
+      <word>min</word>
+      <word>moveFirst</word>
+      <word>moveNext</word>
+      <word>parse</word>
+      <word>parseFloat</word>
+      <word>parseInt</word>
+      <word>pop</word>
+      <word>pow</word>
+      <word>push</word>
+      <word>random</word>
+      <word>replace</word>
+      <word>reverse</word>
+      <word>round</word>
+      <word>search</word>
+      <word>setDate</word>
+      <word>setFullYear</word>
+      <word>setHours</word>
+      <word>setMilliseconds</word>
+      <word>setMinutes</word>
+      <word>setMonth</word>
+      <word>setSeconds</word>
+      <word>setTime</word>
+      <word>setUTCDate</word>
+      <word>setUTCFullYear</word>
+      <word>setUTCHours</word>
+      <word>setUTCMilliseconds</word>
+      <word>setUTCMinutes</word>
+      <word>setUTCMonth</word>
+      <word>setUTCSeconds</word>
+      <word>setYear</word>
+      <word>shift</word>
+      <word>sin</word>
+      <word>slice</word>
+      <word>small</word>
+      <word>sort</word>
+      <word>splice</word>
+      <word>split</word>
+      <word>sqrt</word>
+      <word>strike</word>
+      <word>sub</word>
+      <word>substr</word>
+      <word>substring</word>
+      <word>sup</word>
+      <word>tan</word>
+      <word>test</word>
+      <word>toArray</word>
+      <word>toDateString</word>
+      <word>toExponential</word>
+      <word>toFixed</word>
+      <word>toGMTString</word>
+      <word>toLocaleDateString</word>
+      <word>toLocaleLowerCase</word>
+      <word>toLocaleString</word>
+      <word>toLocaleTimeString</word>
+      <word>toLocaleUpperCase</word>
+      <word>toLowerCase</word>
+      <word>toPrecision</word>
+      <word>toString</word>
+      <word>toTimeString</word>
+      <word>toUpperCase</word>
+      <word>toUTCString</word>
+      <word>ubound</word>
+      <word>unescape</word>
+      <word>unshift</word>
+      <word>UTC</word>
+      <word>valueOf</word>
+      <word>write</word>
+      <word>writeln</word>
+    </pattern>
+    <pattern name="Object" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="red" backColor="transparent"/>
+      <word>ActiveXObject</word>
+      <word>Array</word>
+      <word>arguments</word>
+      <word>Boolean</word>
+      <word>Date</word>
+      <word>Debug</word>
+      <word>Enumerator</word>
+      <word>Error</word>
+      <word>Function</word>
+      <word>Global</word>
+      <word>Math</word>
+      <word>Number</word>
+      <word>Object</word>
+      <word>RegExp</word>
+      <word>String</word>
+      <word>VBArray</word>
+    </pattern>
+    <pattern name="Statement" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="blue" backColor="transparent"/>
+      <word>if</word>
+      <word>else</word>
+      <word>switch</word>
+      <word>case</word>
+      <word>do</word>
+      <word>for</word>
+      <word>function</word>
+      <word>in</word>
+      <word>while</word>
+      <word>break</word>
+      <word>continue</word>
+      <word>return</word>
+      <word>try</word>
+      <word>throw</word>
+      <word>catch</word>
+      <word>finally</word>
+      <word>checked</word>
+      <word>unchecked</word>
+      <word>fixed</word>
+      <word>lock</word>
+      <word>this</word>
+      <word>var</word>
+      <word>with</word>
+      <word>@cc_on</word>
+      <word>@if</word>
+      <word>@set</word>
+      <word>@elif</word>
+      <word>@else</word>
+      <word>@end</word>
+    </pattern>
+    <pattern name="Operator" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="red" backColor="transparent"/>
+      <word>+</word>
+      <word>-</word>
+      <word>=</word>
+      <word>%</word>
+      <word>*</word>
+      <word>/</word>
+      <word>&amp;</word>
+      <word>|</word>
+    </pattern>
+    <pattern name="Property" type="word">
+      <font name="Courier New" size="11" style="regular" foreColor="red" backColor="transparent"/>
+      <word>arguments</word>
+      <word>callee</word>
+      <word>caller</word>
+      <word>constructor</word>
+      <word>description</word>
+      <word>E</word>
+      <word>global</word>
+      <word>ignoreCase</word>
+      <word>index</word>
+      <word>Infinity</word>
+      <word>input</word>
+      <word>lastIndex</word>
+      <word>lastParent</word>
+      <word>leftContext</word>
+      <word>length</word>
+      <word>LN2</word>
+      <word>LN10</word>
+      <word>LOG2E</word>
+      <word>LOG10E</word>
+      <word>MAX</word>
+      <word>message</word>
+      <word>MIN</word>
+      <word>multiline</word>
+      <word>name</word>
+      <word>NaN</word>
+      <word>NEGATIVE_INFINITY</word>
+      <word>number</word>
+      <word>PI</word>
+      <word>POSITIVE_INFINITY</word>
+      <word>propertyIsEnumerable</word>
+      <word>prototype</word>
+      <word>rightContext</word>
+      <word>source</word>
+      <word>SQRT1_2</word>
+      <word>SQRT2</word>
+      <word>undefined</word>
+    </pattern>
+    <pattern name="String" type="block" beginsWith="&quot;" endsWith="&quot;" escapesWith="\">
+      <font name="Courier New" size="11" style="regular" foreColor="#666666" backColor="transparent"/>
+    </pattern>
+    <pattern name="Comment" type="block" beginsWith="//" endsWith="\n">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+    <pattern name="MultiLineComment" type="block" beginsWith="/*" endsWith="*/">
+      <font name="Courier New" size="11" style="regular" foreColor="green" backColor="transparent"/>
+    </pattern>
+  </definition>
+  </definitions>
