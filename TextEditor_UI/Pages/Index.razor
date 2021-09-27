@@ -30,6 +30,7 @@
     //probably change to component and get the real title by passing the argument in some way
     public string CurrentFilePath { get; set; }
 
+
     private List<string> _openFilePaths;
 
     protected override void OnInitialized()
@@ -47,6 +48,8 @@
 
         _openFilePaths = ApplicationState.Instance.FileHandlerInstance.GetOpenFilePaths();
     }
+
+    
 
     private string GetPageTitle() => $"{Path.GetFileName(CurrentFilePath)} - Ouredit";
 

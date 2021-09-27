@@ -15,6 +15,8 @@ Upon opening, the user is greeted with a newly opened file. This file's name and
 
 <img src="images/newFile.PNG" alt="newfile" width="650"/>
 
+The file can be then edited in the rich text editor, which Ouredit provides. There are options for text sizes, colors, highligting and more.
+
 The title as well as the file tab ribbon tells the user which files is being edited. In the lower left corner is the text statistics information. This information is updated while interacting with the editor.
 
 The user may now type and edit the file content. Every change is automatically saved to the file. The updated content can be viewed using different tools right after the user has completed his latest change in the file content.
@@ -40,6 +42,14 @@ The user can use a variety of shortcuts. These can also be configured and saved 
 The settings window available in the 'Settings' menu is the central point of all Ouredit configuration. The user may see default values or change them to their preferences. Once saved, the configuration is saved to disc. Note that if the configuration file is not found during launch, the default configuration is loaded instead. Resetting the settings results in loading the default configuration.
 
 <img src="images/eols.png" alt="eols" width="650"/>
+
+Another advance feature is syntax highlighting, currently provided mainly for C#, C++, C, HTML, JavaScript and Java languages. It is initialized and then maintained by clicking on the appropriate language button in the upper toolbar.
+
+<img src="images/highlighting.png" alt="highlighting" width="650"/>
+
+User can also define his own shortcuts.
+
+<img src="images/shortcuts.png" alt="shortcuts" width="650"/>
 
 ## Program documentation
 

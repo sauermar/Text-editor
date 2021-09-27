@@ -2,7 +2,7 @@
 using Components.TextHighlighter.Configuration;
 using Components.TextHighlighter.OutputEngine;
 
-namespace Components
+namespace Components.TextHighlighter
 {
     [Sauerova]
     public class Highlighter

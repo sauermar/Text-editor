@@ -1,56 +1,115 @@
 ﻿@using System.Security.Cryptography
 @using Components.Models
 @using Buffer = Components.Models.Buffer
+@using NUglify
+@using Components.TextHighlighter.OutputEngine
+@using Components.TextHighlighter
 @inject IFileContentChangeBroadcastService FileContentService
 @inject ICursorPositionChangeBroadcastService CursorPositionService
+@inject IJSRuntime JS
 @implements IDisposable
-
 @*
     Current file content
 *@
 
 <ContextMenu CurrentFilePath="@CurrentFilePath" ContextMenuStyle="@ContextMenuStyle"></ContextMenu>
 
-<textarea id="text-box" 
-          @bind="_fileContent" 
-          @onkeydown="@CmdOnKeyPress" 
-          @onclick="CmdOnClick" 
-          @oninput="async ui =>
-                    {
-                        _fileContent = (string)ui.Value;
-
-                        var contentHandler = FileContentChanged;
-                        contentHandler?.Invoke(this, new FileContentChangeArgs(_currentBuffer, _fileContent));
-                    }">
-</textarea>
-
 @*
-    ContentEditable container - looks better, but doesn't preserve encoding.
+    <textarea id="text-box"
+              @bind="_fileContent"
+              @onkeydown="@CmdOnKeyPress"
+              @onclick="CmdOnClick"
+              @oninput="async ui =>
+                        {
+                            _fileContent = (string)ui.Value;
 
-<div @ref="editorEdit" id="text-box" @onkeydown="GetContent" contenteditable>
-    @((MarkupString)_fileContent)
-</div>
+                            var contentHandler = FileContentChanged;
+                            contentHandler?.Invoke(this, new FileContentChangeArgs(_currentBuffer, _fileContent));
+                        }">
+    </textarea>
 *@
 
-@functions
-{
-    @*
-        Content getter for the ContentEditable container.
-    async Task GetContent()
+@*
+        ContentEditable container - looks better, but doesn't preserve encoding.
+
+    <div @ref="editorEdit" id="text-box" @onkeydown="GetContent" contenteditable>
+        @((MarkupString)_fileContent)
+    </div>
+
+
+    @functions
     {
-        var tmp = await JS.InvokeAsync<string>("JsLib.getInnerHtml", editorEdit);
-        value = tmp.Replace("<!--!-->", string.Empty);
-        value = value.Replace("<div>", string.Empty);
-        value = value.Replace("<br>", "\n");
-        value = value.Replace("</div>", "\n");
-        value = value.Replace("&nbsp;", " ");
 
-        Console.WriteLine($"#DEBUG: Text box value has changed.\n" +
-                          $"{(MarkupString)value}");
-    }
-    *@
+            Content getter for the ContentEditable container.
 
-}
+        async Task GetContent()
+        {
+            var tmp = await JS.InvokeAsync<string>("JsLib.getInnerHtml", editorEdit);
+            var value = tmp.Replace("<!--!-->", string.Empty);
+            value = value.Replace("<div>", string.Empty);
+            value = value.Replace("<br>", "\n");
+            value = value.Replace("</div>", "\n");
+            value = value.Replace("&nbsp;", " ");
+
+            Console.WriteLine($"#DEBUG: Text box value has changed.\n" +
+                              $"{(MarkupString)value}");
+        }
+*@
+
+<TextEditor @ref="@QuillHtml">
+    <ToolbarContent>
+        <select class="ql-header">
+            <option selected=""></option>
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5"></option>
+        </select>
+        <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+        </span>
+        <span class="ql-formats">
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+        </span>
+        <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+        </span>
+        <span class="ql-formats">
+            <button class="ql-link"></button>
+        </span>
+        <span class="ql-formats">
+            <button @onclick='UnDoHighlightContent'>Text</button>
+        </span>
+        <span class="ql-formats">
+            <button @onclick='async e => await HighlightContent("C#")'>C#</button>
+        </span>
+        <span class="ql-formats">
+            <button @onclick='async e => await HighlightContent("Java")'>Java</button>
+        </span>
+        <span class="ql-formats">
+            <button @onclick='async e => await HighlightContent("HTML")'>HTML</button>
+        </span>
+        <span class="ql-formats">
+            <button @onclick='async e => await HighlightContent("C++")'>C++</button>
+        </span>
+        <span class="ql-formats">
+            <button @onclick='async e => await HighlightContent("C")'>C</button>
+        </span>
+        <span class="ql-formats">
+            <button @onclick='async e => await HighlightContent("JavaScript")'>JS</button>
+        </span>
+
+    </ToolbarContent>
+    <EditorContent>
+    </EditorContent>
+</TextEditor>
+
 
 @code{
     [Parameter]
@@ -59,26 +118,116 @@
 
     private int _cursorPosition;
     private string _fileContent;
+    private string _definitionName = "C#";
     private Buffer _currentBuffer;
+    private bool _rerender = false;
+    private int userChange = 1;
+    private bool contentIsHighlighted = false;
+    private Highlighter highlighter;
+    private static Func<Task> ChangeParaContentActionAsync;
 
-    @*
-        Reference for the ContentEditable container.
-    private ElementReference editorEdit;
-    *@
+    TextEditor QuillHtml;
+    string QuillHTMLContent;
+
+
+    [JSInvokable]
+    public static async Task TextChanged()
+    {
+        Console.WriteLine($"#DEBUG: Editor's content was changed.");
+        await ChangeParaContentActionAsync.Invoke();
+
+    }
+
+    public async Task OnInput()
+    {
+        userChange++;
+        string _fileContent = (await this.QuillHtml.GetText()).TrimEnd();
+
+        //if (contentIsHighlighted && userChange % 2 == 0)
+        //{
+        //    var highlightedCode = highlighter.Highlight(_definitionName, _fileContent);
+        //    await this.QuillHtml.LoadHTMLContent2(highlightedCode);
+
+        //    await this.QuillHtml.Focus();
+        //    StateHasChanged();
+        //}
+
+        var contentHandler = FileContentChanged;
+        contentHandler?.Invoke(this, new FileContentChangeArgs(_currentBuffer, _fileContent));
+    }
+
+    public async void GetHTML()
+    {
+        QuillHTMLContent = await this.QuillHtml.GetHTML();
+        StateHasChanged();
+    }
+
+    public async Task HighlightContent(string definitionName)
+    {
+        _definitionName = definitionName;
+        contentIsHighlighted = true;
+        var highlightedCode = highlighter.Highlight(definitionName, _currentBuffer.GetBufferContent());
+        await this.QuillHtml.LoadHTMLContent(highlightedCode);
+        StateHasChanged();
+
+    }
+
+    public async Task UnDoHighlightContent()
+    {
+        contentIsHighlighted = false;
+        string QuillContent = await this.QuillHtml.GetText();
+
+        await this.QuillHtml.LoadHTMLContent(QuillContent);
+        StateHasChanged();
+
+    }
+
+    public async void GetText()
+    {
+        QuillHTMLContent = await this.QuillHtml.GetContent();
+        StateHasChanged();
+    }
+
+    public async void SetHTML()
+    {
+        string QuillContent = _fileContent;
+
+        await this.QuillHtml.LoadHTMLContent(QuillContent);
+        StateHasChanged();
+    }
 
     protected override void OnInitialized()
     {
         FileContentService.OnFileContentChanged += MenuActions.FileContentChanged;
         CursorPositionService.OnCursorPositionChanged += MenuActions.CursorPositionChanged;
+        ChangeParaContentActionAsync = OnInput;
+        highlighter = new Highlighter(new HtmlEngine());
     }
-    
+
     protected override void OnParametersSet()
     {
         Console.WriteLine($"#DEBUG: Updating the text box content to the {CurrentFilePath} file.");
         _currentBuffer = ApplicationState.Instance.FileHandlerInstance.GetFileBuffer(CurrentFilePath);
         _fileContent = _currentBuffer.GetBufferContent();
+        _rerender = true;
     }
-    
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await QuillHtml.AfterRenderAsync(_rerender);
+        if (_rerender)
+        {
+            if (!String.IsNullOrEmpty(_fileContent))
+            {
+
+                await this.QuillHtml.LoadHTMLContent(_fileContent);
+                _rerender = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+
     public static event EventHandler<FileContentChangeArgs> FileContentChanged = FileContentChangeNotify;
     public static event EventHandler<CursorPositionChangeArgs> CursorPositionChanged = CursorPositionChangeNotify;
 
@@ -105,34 +254,34 @@
 
     private void CmdOnClick(MouseEventArgs args)
     {
-        CmdHideContextMenu();
+        //CmdHideContextMenu();
 
-        GetCursorPosition();
+        //GetCursorPosition();
 
-        var cursorHandler = CursorPositionChanged;
-        cursorHandler?.Invoke(this, new CursorPositionChangeArgs(_cursorPosition));
+        //var cursorHandler = CursorPositionChanged;
+        //cursorHandler?.Invoke(this, new CursorPositionChangeArgs(_cursorPosition));
     }
 
     private void CmdOnKeyPress(KeyboardEventArgs args)
     {
-        if (args.AltKey || args.CtrlKey)
-        {
-            return;
-        }
+        //if (args.AltKey || args.CtrlKey)
+        //{
+        //    return;
+        //}
 
-        GetCursorPosition();
+        //GetCursorPosition();
 
-        var cursorHandler = CursorPositionChanged;
-        cursorHandler?.Invoke(this, new CursorPositionChangeArgs(_cursorPosition));
+        //var cursorHandler = CursorPositionChanged;
+        //cursorHandler?.Invoke(this, new CursorPositionChangeArgs(_cursorPosition));
 
-        if (args.Key == "@")
-        {
-            CmdDisplayContextMenu("text-box");
-        }
-        else
-        {
-            CmdHideContextMenu();
-        }
+        //if (args.Key == "@")
+        //{
+        //    CmdDisplayContextMenu("text-box");
+        //}
+        //else
+        //{
+        //    CmdHideContextMenu();
+        //}
     }
 
     public async void CmdDisplayContextMenu(string elementId)

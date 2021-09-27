@@ -1,0 +1,109 @@
+﻿@inject IJSRuntime JSRuntime
+
+<div @ref="@ToolBar">
+    @ToolbarContent
+</div>
+<div id='text-box' @ref="@QuillElement">
+    @EditorContent
+</div>
+
+@code {
+
+    [Parameter]
+    public RenderFragment EditorContent { get; set; }
+
+    [Parameter]
+    public RenderFragment ToolbarContent { get; set; }
+
+    [Parameter]
+    public bool ReadOnly { get; set; }
+        = false;
+
+    [Parameter]
+    public string Placeholder { get; set; }
+
+    [Parameter]
+    public string Theme { get; set; }
+        = "snow";
+
+    [Parameter]
+    public string DebugLevel { get; set; }
+        = "info";
+
+    private ElementReference QuillElement;
+    private ElementReference ToolBar;
+
+    public async Task AfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await QuillEditorInterops.CreateQuill(
+                JSRuntime,
+                QuillElement,
+                ToolBar,
+                ReadOnly,
+                Placeholder,
+                Theme,
+                DebugLevel);
+        }
+    }
+
+    public async Task<string> GetText()
+    {
+        return await QuillEditorInterops.GetText(
+            JSRuntime, QuillElement);
+    }
+
+    public async Task<string> Focus()
+    {
+        return await QuillEditorInterops.Focus(
+            JSRuntime, QuillElement);
+    }
+
+    public async Task<string> GetHTML()
+    {
+        return await QuillEditorInterops.GetHTML(
+            JSRuntime, QuillElement);
+    }
+
+    public async Task<string> GetContent()
+    {
+        return await QuillEditorInterops.GetContent(
+            JSRuntime, QuillElement);
+    }
+
+    public async Task LoadContent(string Content)
+    {
+        var QuillDelta =
+            await QuillEditorInterops.LoadQuillContent(
+                JSRuntime, QuillElement, Content);
+    }
+
+    public async Task LoadHTMLContent(string quillHTMLContent)
+    {
+        var QuillDelta =
+            await QuillEditorInterops.LoadQuillHTMLContent(
+                JSRuntime, QuillElement, quillHTMLContent);
+    }
+
+    public async Task LoadHTMLContent2(string quillHTMLContent)
+    {
+        var QuillDelta =
+            await QuillEditorInterops.LoadQuillHTMLContent2(
+                JSRuntime, QuillElement, quillHTMLContent);
+    }
+
+    public async Task InsertImage(string ImageURL)
+    {
+        var QuillDelta =
+            await QuillEditorInterops.InsertQuillImage(
+                JSRuntime, QuillElement, ImageURL);
+    }
+
+    public async Task EnableEditor(bool mode)
+    {
+        var QuillDelta =
+            await QuillEditorInterops.EnableQuillEditor(
+                JSRuntime, QuillElement, mode);
+    }
+}
