@@ -45,7 +45,7 @@ The settings window available in the 'Settings' menu is the central point of all
 
 Another advance feature is syntax highlighting, currently provided mainly for C#, C++, C, HTML, JavaScript and Java languages. It is initialized and then maintained by clicking on the appropriate language button in the upper toolbar.
 
-<img src="images/highlighting.png" alt="highlighting" width="650"/>
+<img src="images/highlighting.PNG" alt="highlighting" width="650"/>
 
 User can also define his own shortcuts.
 
